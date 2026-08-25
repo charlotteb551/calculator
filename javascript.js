@@ -6,12 +6,37 @@ let secondNumber = "";
 
 const display = document.querySelector("#display");
 const digitButtons = document.querySelectorAll(".digit");
+const operatorButtons = document.querySelectorAll(".operator");
+const equalsButton = document.querySelector(".equals");
+
+// Filling the variables
 
 digitButtons.forEach((button) =>{
 	button.addEventListener("click", () => {
-		firstNumber += button.textContent;
-		display.textContent = firstNumber;
+
+		if (operator === ""){
+			firstNumber += button.textContent;
+			display.textContent = firstNumber;
+		} else{
+			secondNumber += button.textContent;
+			display.textContent = secondNumber;
+		}
+		
 	});
+})
+
+operatorButtons.forEach((button) =>{
+	button.addEventListener("click", () => {
+		operator = button.textContent;
+	});
+})
+
+// Operates when "=" pressed
+
+equalsButton.addEventListener("click", () =>{
+	const result = operate(operator, Number(firstNumber), Number(secondNumber));
+
+	display.textContent = result;
 })
 
 // Operator Functions

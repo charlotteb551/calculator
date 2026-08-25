@@ -8,6 +8,7 @@ const display = document.querySelector("#display");
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector(".equals");
+const clearButton = document.querySelector(".clear")
 
 // Filling the variables
 
@@ -37,6 +38,20 @@ equalsButton.addEventListener("click", () =>{
 	const result = operate(operator, Number(firstNumber), Number(secondNumber));
 
 	display.textContent = result;
+
+	firstNumber = result;
+	operator = "";
+	secondNumber = "";
+})
+
+// Clear Button
+
+clearButton.addEventListener("click", () =>{
+	firstNumber = "";
+	operator = "";
+	secondNumber = "";
+
+	display.textContent ="0"
 })
 
 // Operator Functions

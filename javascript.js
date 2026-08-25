@@ -24,9 +24,9 @@ function operate(a, operator, b){
 		return add(a,b);
 	} else if (operator === "-"){
 		return subtract(a,b);
-	} else if (operator === "*"){
+	} else if (operator === "x"){
 		return multiply(a,b);
-	} else if (operator === "/"){
+	} else if (operator === "÷"){
 		return divide(a,b);
 	} else {
 		return "Invalid Operator";

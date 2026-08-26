@@ -3,6 +3,7 @@
 let firstNumber = "";
 let operator = "";
 let secondNumber = "";
+let justCalculated = false;
 
 const display = document.querySelector("#display");
 const digitButtons = document.querySelectorAll(".digit");
@@ -14,6 +15,13 @@ const clearButton = document.querySelector(".clear")
 
 digitButtons.forEach((button) =>{
 	button.addEventListener("click", () => {
+
+		if(justCalculated){
+			firstNumber = "";
+			secondNumber = "";
+			operator = "";
+			justCalculated = false;
+		}
 
 		if (operator === ""){
 			if (button.textContent === "." && firstNumber.includes(".")){
@@ -66,6 +74,10 @@ operatorButtons.forEach((button) =>{
 // Operates when "=" pressed
 
 equalsButton.addEventListener("click", () =>{
+	if(firstNumber === "" || operator === "" || secondNumber ===""){
+		return; 
+	}
+
 	const result = operate(operator, Number(firstNumber), Number(secondNumber));
 
 	display.textContent = result;
@@ -73,6 +85,7 @@ equalsButton.addEventListener("click", () =>{
 	firstNumber = result;
 	operator = "";
 	secondNumber = "";
+	justCalculated= true;
 })
 
 // Clear Button

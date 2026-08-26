@@ -4,12 +4,14 @@ let firstNumber = "";
 let operator = "";
 let secondNumber = "";
 let justCalculated = false;
+let previousOperator = "";
+let previousNumber = "";
 
 const display = document.querySelector("#display");
 const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector(".equals");
-const clearButton = document.querySelector(".clear")
+const clearButton = document.querySelector(".clear");
 
 // Filling the variables
 
@@ -74,18 +76,25 @@ operatorButtons.forEach((button) =>{
 // Operates when "=" pressed
 
 equalsButton.addEventListener("click", () =>{
-	if(firstNumber === "" || operator === "" || secondNumber ===""){
-		return; 
+	if(firstNumber !== "" && operator !=="" && secondNumber !== ""){
+		const result = operate(operator, Number(firstNumber), Number(secondNumber));
+
+		display.textContent = result;
+
+		previousOperator = operator;
+		previousNumber = secondNumber;
+
+		firstNumber = result;
+		operator = "";
+		secondNumber = "";
+		justCalculated= true;
+
+	}else if (justCalculated){
+		const result = operate (previousOperator,Number(firstNumber),Number(previousNumber))
+		display.textContent = result;
+		firstNumber=result;
+		justCalculated=true;
 	}
-
-	const result = operate(operator, Number(firstNumber), Number(secondNumber));
-
-	display.textContent = result;
-
-	firstNumber = result;
-	operator = "";
-	secondNumber = "";
-	justCalculated= true;
 })
 
 // Clear Button
@@ -94,6 +103,9 @@ clearButton.addEventListener("click", () =>{
 	firstNumber = "";
 	operator = "";
 	secondNumber = "";
+	justCalculated = false;
+	previousNumber= "";
+	previousOperator= "";
 
 	display.textContent ="0"
 })

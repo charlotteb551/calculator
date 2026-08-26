@@ -52,7 +52,7 @@ operatorButtons.forEach((button) =>{
 			return;
 		}
 
-		// Don't allow other operators before first
+		// Don't allow other operators before first number
 		if(firstNumber === ""){
 			return;
 		}
@@ -69,7 +69,19 @@ operatorButtons.forEach((button) =>{
 			operator = button.textContent;
 			return;
 		}
+
+		// If an operator is added after after the second number
+		if(operator !== "" && secondNumber !== ""){
+			const result = operate(operator, Number(firstNumber), Number(secondNumber))
+
+			display.textContent = result;
+
+			firstNumber = result;
+			secondNumber = "";
+		}
+
 		operator = button.textContent;
+		justCalculated = false;
 	});
 })
 

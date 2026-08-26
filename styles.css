@@ -1,0 +1,24 @@
+#display{
+    font-size: 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+    width: 335px;
+}
+
+button{
+    width: 80px;
+    height: 40px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #ddd;
+}

@@ -16,9 +16,15 @@ digitButtons.forEach((button) =>{
 	button.addEventListener("click", () => {
 
 		if (operator === ""){
+			if (button.textContent === "." && firstNumber.includes(".")){
+				return;
+			}
 			firstNumber += button.textContent;
 			display.textContent = firstNumber;
 		} else{
+			if (button.textContent === "." && secondNumber.includes(".")){
+				return;
+			}
 			secondNumber += button.textContent;
 			display.textContent = secondNumber;
 		}
@@ -28,6 +34,31 @@ digitButtons.forEach((button) =>{
 
 operatorButtons.forEach((button) =>{
 	button.addEventListener("click", () => {
+		
+		// Allow negative as first number
+		if(firstNumber ==="" && button.textContent === "-"){
+			firstNumber = "-";
+			display.textContent = firstNumber;
+			return;
+		}
+
+		// Don't allow other operators before first
+		if(firstNumber === ""){
+			return;
+		}
+
+		// Allow negative second number
+		if(operator !== "" && secondNumber === "" && button.textContent === "-"){
+			secondNumber = "-";
+			display.textContent = secondNumber;
+			return;
+		}
+
+		// If an operator already exist, change it
+		if(operator !== "" && secondNumber === ""){
+			operator = button.textContent;
+			return;
+		}
 		operator = button.textContent;
 	});
 })

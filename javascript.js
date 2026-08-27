@@ -200,3 +200,43 @@ function operate(operator, a, b){
 	return result;
 }
 
+// Keyboard Support
+document.addEventListener("keydown", (event)=> {
+	const key = event.key;
+
+	if ((key >= "0" && key <= "9") || key === "."){
+		digitButtons.forEach((button) =>{
+			if (button.textContent === key){
+				button.click();
+			}
+		})
+	}
+
+	if (key === "+" || key === "-" || key ==="x" || key === "*" || key ==="/"){
+		const operatorMap = {
+			"+": "+",
+			"-": "-",
+			"x": "×",
+			"*": "×",
+			"/":"÷"
+		}
+
+		operatorButtons.forEach((button) => {
+			if (button.textContent === operatorMap[key]){
+				button.click();
+			}
+		})
+	} 
+
+	if (key === "Enter" || key === "=") {
+        equalsButton.click();
+    }
+
+    if (key === "Backspace") {
+        backspaceButton.click();
+    }
+
+    if (key === "Escape" || key === "Delete") {
+        clearButton.click();
+    }
+})

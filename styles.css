@@ -4,10 +4,10 @@ body{
     align-items: center;
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #102542;
-    background-image:  repeating-linear-gradient(to right, transparent 0, transparent 3.3333333333333335px, #102542 3.3333333333333335px, #102542 10px, transparent 10px, transparent 13.333333333333334px), repeating-linear-gradient(to bottom, transparent 0, transparent 3.3333333333333335px, #102542 3.3333333333333335px, #102542 10px, transparent 10px, transparent 13.333333333333334px), linear-gradient(to bottom, #d1d5de 1.2px, transparent 1.2px), linear-gradient(to right, #d1d5de 1.2px, transparent 1.2px) ;
-    background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-    background-position: 0 0, 0 0, 0 -0.4px, -0.4px 0;
+    background-color: #1B4071;
+    background-image:  repeating-linear-gradient(to right, transparent 0, transparent 5.833333333333333px, #1B4071 5.833333333333333px, #1B4071 17.5px, transparent 17.5px, transparent 23.333333333333332px), repeating-linear-gradient(to bottom, transparent 0, transparent 5.833333333333333px, #1B4071 5.833333333333333px, #1B4071 17.5px, transparent 17.5px, transparent 23.333333333333332px), linear-gradient(to bottom, #d1d5de 2.1px, transparent 2.1px), linear-gradient(to right, #d1d5de 2.1px, transparent 2.1px) ;
+    background-size: 100% 100%, 100% 100%, 70px 70px, 70px 70px;
+    background-position: 0 0, 0 0, 0 -0.7000000000000001px, -0.7000000000000001px 0;
 }
 
 .calculator{
@@ -31,7 +31,7 @@ body{
     justify-content: flex-end;
 
     background-color: #d1d5de;
-    color: #102542;
+    color: black;
     border-radius: 10px;
     box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.15);
     overflow: hidden;

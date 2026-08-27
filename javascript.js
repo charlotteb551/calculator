@@ -12,6 +12,7 @@ const digitButtons = document.querySelectorAll(".digit");
 const operatorButtons = document.querySelectorAll(".operator");
 const equalsButton = document.querySelector(".equals");
 const clearButton = document.querySelector(".clear");
+const backspaceButton = document.querySelector(".backspace");
 
 // Filling the variables
 
@@ -104,6 +105,15 @@ equalsButton.addEventListener("click", () =>{
 	}else if (justCalculated){
 		const result = operate (previousOperator,Number(firstNumber),Number(previousNumber))
 		display.textContent = result;
+
+		if(typeof result !== "number"){
+			firstNumber = "";
+			operator = "";
+			secondNumber = "";
+			justCalculated = false;
+			return
+		}
+
 		firstNumber=result;
 		justCalculated=true;
 	}
@@ -121,6 +131,31 @@ clearButton.addEventListener("click", () =>{
 
 	display.textContent ="0"
 })
+
+// Backspace Button
+
+backspaceButton.addEventListener("click", () => {
+
+    if (justCalculated) {
+        firstNumber = String(firstNumber).slice(0, -1);
+        display.textContent = firstNumber || "0";
+        justCalculated = false;
+        return;
+    }
+
+    if (secondNumber !== "") {
+        secondNumber = secondNumber.slice(0, -1);
+        display.textContent = secondNumber || "0";
+
+    } else if (operator !== "") {
+        operator = "";
+        display.textContent = firstNumber || "0";
+
+    } else {
+        firstNumber = firstNumber.slice(0, -1);
+        display.textContent = firstNumber || "0";
+    }
+});
 
 // Operator Functions
 
